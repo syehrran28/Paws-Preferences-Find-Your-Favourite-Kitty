@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paws & Preferences</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="browser_icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Intro Splash Screen -->
+  <div id="intro-overlay" class="intro-overlay">
+  <div class="intro-content">
+    <h1>Paws & Preferences:<br>Find Your Favourite Kitty </h1>
+    <img src="cat_gif.gif" alt="cat gif" class="intro-gif" />
+    <p>Tap anywhere to begin</p>
+  </div>
+</div>
+
+  <!-- Main App Container -->
+  <div class="app" style="display: none;">
+    <div id="card-container" class="card-container"></div>
+    <div class="buttons">
+      <button onclick="handleSwipe('left')"><img src = "claw-marks.png"/><span class = "tooltip">Swipe left or click here to dislike</span> </button>
+      <button onclick="undoSwipe()"><img src = "undo_icon.png"/><span class = "tooltip">Undo the last swipe</span> </button>
+      <button  onclick="handleSwipe('right')"><img src = "paw.png"/><span class = "tooltip">Swipe right or click here to like</span> </button>
+    </div>
+  </div>
+
+  <!--  Modal for image preview -->
+<div id="image-modal" class="image-modal">
+  <span class="close-btn" onclick="closeModal()">&times;</span>
+  <img id="modal-img" src="" alt="Cat" />
+  
+</div>
+
+
+  <audio id="intro-sound" src="cat_intro_audio.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>

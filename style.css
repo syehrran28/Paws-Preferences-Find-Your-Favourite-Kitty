@@ -1,0 +1,370 @@
+/* GENERAL LAYOUT */
+body {
+  overflow: hidden;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-image: url("cat_background.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* INTRO SPLASH */
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff9f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+  color: #333;
+  transition: opacity 0.4s ease;
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+  transform: scale(1.3);
+}
+
+.intro-content h1 {
+  font-size: 3rem;
+  margin-bottom: 25px;
+}
+
+.intro-content p {
+  font-size: 1.5rem;
+  margin-top: 25px;
+}
+
+.intro-gif {
+  width: 300px;
+  max-width: 80vw;
+  height: auto;
+}
+
+h1 {
+  margin: 20px 0;
+}
+
+.app {
+  width: 95vw;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* WRAPPER for card + buttons */
+.main-app-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(1.1);
+}
+
+/* CARD CONTAINER */
+.card-container {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  border-radius: 20px;
+  margin-bottom: clamp(20px, 5vh, 60px);
+}
+
+/* INDIVIDUAL CARDS */
+.card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  will-change: transform;
+  touch-action: pan-y;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card-inner::after {
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* BUTTONS */
+.buttons {
+  margin-top: 10px;
+  padding-bottom: clamp(30px, 5vh, 60px);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 140px;
+}
+
+button {
+  width: 70px;
+  height: 70px;
+  aspect-ratio: 1 / 1;
+  border: none;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.15) rotate(-3deg);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+button:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+button img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* TOOLTIP */
+.tooltip {
+  position: absolute;
+  bottom: -2.8em;
+  background-color: #333;
+  color: #fff;
+  padding: 0.4em 0.8em;
+  border-radius: 0.5em;
+  font-size: 0.75em;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 99;
+  transform: scale(0.95);
+}
+
+button.show-tooltip .tooltip {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* SUMMARY */
+.summary {
+  text-align: center;
+  padding: 0 20px 20px;
+  display: contents;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  overflow-y: auto;
+  width: min-content;
+}
+
+.summary h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #444;
+  margin-bottom: 25px;
+}
+
+/* Wrap grid */
+.summary-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+/* GRID TO 4x3 */
+.liked-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 150px);
+  gap: 16px;
+  justify-content: center;
+  padding: 0 10px;
+  width: auto;
+  max-width: 100%;
+}
+
+.liked-thumb {
+  width: 120px;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.liked-thumb:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* RESTART BUTTON */
+.restart-button {
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.restart-button:hover {
+  transform: scale(1.1) rotate(10deg);
+}
+
+.restart-button img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+/* MODAL */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.image-modal img {
+  max-width: 85vw;
+  max-height: 85vh;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #fff;
+}
+
+.close-btn {
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+  top: 40px;
+  right: 50px;
+  cursor: pointer;
+}
+
+/* RESPONSIVENESS */
+@media (min-width: 768px) {
+  .card {
+    height: 600px;
+    width: 480px;
+  }
+
+  .intro-content {
+    transform: scale(1.4);
+  }
+
+  .main-app-wrapper {
+    transform: scale(1.25);
+  }
+}
+
+@media (max-width: 600px) {
+  .intro-content {
+    transform: scale(1.1);
+  }
+
+  .intro-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .intro-content p {
+    font-size: 1.1rem;
+  }
+
+  .intro-gif {
+    width: 220px;
+  }
+
+  .buttons {
+    gap: 60px;
+  }
+
+  button {
+    width: 60px;
+    height: 60px;
+  }
+
+  .tooltip {
+    font-size: 0.65em;
+    padding: 0.35em 0.6em;
+    bottom: -2.5em;
+  }
+
+  .main-app-wrapper {
+    transform: scale(1);
+  }
+
+  .summary h2 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+   .summary-content-wrapper {
+    transform: scale(0.85);
+    margin-bottom: 0;
+    gap: 10px;
+  }
+
+  .liked-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 0;
+  }
+  .restart-button {
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+  }
+
+  .restart-button img {
+    width: 50%;
+    height: 50%;
+  }
+}
